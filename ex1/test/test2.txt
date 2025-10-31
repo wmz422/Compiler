@@ -1,0 +1,16 @@
+// 测试文件2：控制结构和运算符
+void test() {
+    int i = 0;
+    while (i < 10) {
+        if (i == 5) {
+            i = i + 1;
+        } else {
+            i = i * 2;
+        }
+    }
+    for (int j = 0; j < 100; j++) {
+        if (j <= 50 && j >= 20) {
+            break;
+        }
+    }
+}

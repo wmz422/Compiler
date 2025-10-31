@@ -16,6 +16,7 @@ enum class TokenType{
     DO,
     WHILE,
     RETURN,
+    BREAK,
 
     // Single-character tokens
     LEFT_PAREN,     // (
@@ -48,7 +49,7 @@ enum class TokenType{
     PIPE,           // |
     PIPE_PIPE,      // ||
     SLASH,          // /
-    SLASH_SLASH,    // //
+    COMMENT,    // //
 
     // Literals
     IDENTIFIER,     // 标识符

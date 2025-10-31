@@ -14,6 +14,8 @@ std::string tokenTypeToString(TokenType t){
 		case TokenType::DO: return "DO";
 		case TokenType::WHILE: return "WHILE";
 		case TokenType::RETURN: return "RETURN";
+		case TokenType::BREAK: return "BREAK";
+
 
 		case TokenType::LEFT_PAREN: return "LEFT_PAREN";
 		case TokenType::RIGHT_PAREN: return "RIGHT_PAREN";
@@ -25,6 +27,7 @@ std::string tokenTypeToString(TokenType t){
 		case TokenType::PLUS: return "PLUS";
 		case TokenType::SEMICOLON: return "SEMICOLON";
 		case TokenType::SLASH: return "SLASH";
+		case TokenType::COMMENT: return "COMMENT";
 		case TokenType::STAR: return "STAR";
 		case TokenType::QUESTION: return "QUESTION";
 		case TokenType::COLON: return "COLON";
@@ -61,6 +64,6 @@ Token::Token(TokenType type,std::string lexeme,int line):type(type), lexeme(lexe
 
 std::string Token::toString() const{//这里const保证不对类内属性进行任何修改
     std::ostringstream oss;
-    oss<<'<'<<tokenTypeToString(type)<<','<<lexeme<<'> '<< " [line=" << line << "]";
+    oss<<'<'<<tokenTypeToString(type)<<','<<lexeme<<"> "<< " [line=" << line << "]";
     return  oss.str();
 }

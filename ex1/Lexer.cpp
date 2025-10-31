@@ -5,6 +5,7 @@
 Lexer::Lexer(const std::string& source):source(source){};
 
 char Lexer::getChar(){
+    if (cur >= static_cast<int>(source.size())) return '\0';
     return source[cur++];
 }
 
@@ -31,7 +32,8 @@ void Lexer::lookup(){
 		{"for", TokenType::FOR},
 		{"do", TokenType::DO},
 		{"while", TokenType::WHILE},
-		{"return", TokenType::RETURN}
+		{"return", TokenType::RETURN},
+        {"break", TokenType::BREAK}
 	};
     bool find=false;
     for(const auto &it:keywords){
@@ -47,7 +49,7 @@ void Lexer::lookup(){
 }
 
 std::vector<Token> Lexer::scanTokens(){
-    while(source[cur]!=EOF){
+    while (cur < static_cast<int>(source.size())) {
         scanToken();
     }
     addToken(TokenType::END_OF_FILE);
@@ -147,8 +149,13 @@ void Lexer::scanToken(){
             break;
         case '/':
             next=getChar();
-            if(next=='//')
-                addToken(TokenType::SLASH_SLASH);
+            if(next=='/'){
+                while ((c = getChar()) != '\n' && c != '\0') {
+                    ;
+                }
+                if (c != '\0') retract();
+                addToken(TokenType::COMMENT);
+            }
             else{
                 retract();
                 addToken(TokenType::SLASH);
@@ -164,15 +171,15 @@ void Lexer::scanToken(){
         
         //处理标识符或关键字或者数字
         default:
-            if(isalpha(c)){
-                while(isalnum(c=getChar())){
+            if(isalpha(c) || c=='_'){
+                while(isalnum(c=getChar())||c=='_'){
                     ;
                 }
                 retract();
                 lookup();
             }
             if(isnumber(c)){
-                while(isnumber(c=getChar())){
+                while(isnumber(c=getChar())||c=='.'){
                     ;
                 }
                 retract();

@@ -1,0 +1,11 @@
+// 测试文件4：标识符和特殊字符
+void test_identifiers() {
+    int _variable1;
+    float temp123;
+    double __result;
+    char* string_ptr;
+    int array[10];
+    if (true != false) {
+        return;
+    }
+}
