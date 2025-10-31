@@ -1,5 +1,6 @@
 #include <unordered_map>
 #include <cctype>
+#include <cstdlib>
 #include"Lexer.h"
 
 Lexer::Lexer(const std::string& source):source(source){};
@@ -179,11 +180,22 @@ void Lexer::scanToken(){
                 lookup();
             }
             if(isnumber(c)){
+                TokenType type=TokenType::NUMBER_LITERAL;
                 while(isnumber(c=getChar())||c=='.'){
                     ;
                 }
+                if (isalpha(c)) {
+                    type = TokenType::ERROR;
+                    // consume until whitespace, newline or EOF using getChar(), not getchar()
+                    while ((c = getChar()) != ' ' && c != '\0' && c != '\n'&& isalnum(c)==true) {
+                        ;
+                    }
+                    if (c != '\0') retract();
+                    addToken(type);
+                    break;
+                }
                 retract();
-                addToken(TokenType::NUMBER_LITERAL);
+                addToken(type);
             }
             
     }

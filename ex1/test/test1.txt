@@ -4,5 +4,6 @@ int main() {
     float pi = 3.14159;
     double e = 2.71828;
     void* ptr;
+    int 3a;//这里是一个错误语法
     return 0;
 }
