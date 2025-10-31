@@ -24,10 +24,7 @@ enum class TokenType{
     RIGHT_BRACE,    // }
     COMMA,          // ,
     DOT,            // .
-    MINUS,          // -
-    PLUS,           // +
     SEMICOLON,      // ;
-    SLASH,          // /
     STAR,           // *
     QUESTION,       // ?
     COLON,          // :
@@ -41,13 +38,17 @@ enum class TokenType{
     GREATER_EQUAL,  // >=
     LESS,           // <
     LESS_EQUAL,     // <=
-    ARROW,          // ->
+    PLUS,           // +
     PLUS_PLUS,      // ++
+    MINUS,          // -
     MINUS_MINUS,    // --
+    ARROW,          // ->
     AMPERSAND,      // &
     AMPERSAND_AMPERSAND, // &&
     PIPE,           // |
     PIPE_PIPE,      // ||
+    SLASH,          // /
+    SLASH_SLASH,    // //
 
     // Literals
     IDENTIFIER,     // 标识符
@@ -70,4 +71,5 @@ struct Token{
 
     Token(TokenType type,std::string lexeme,int line);//构造函数
     std::string toString() const;//输出token结果为字符串
+    
 };
