@@ -10,6 +10,9 @@ private:
     const std::vector<Token> tokens;//词法分析结果
     int cur;//cur指针
     int len;//tokens长度
+    TokenType cur_type=tokens[cur].type;//当前type
+
+    bool adv();//cur加
     
     bool fun1();//S->
     bool fun2();//E->
