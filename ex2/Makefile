@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall
 
 # Source files
-SRCS = main.cpp Rec.cpp ../ex1/Lexer.cpp ../ex1/Token.cpp
+SRCS = main.cpp ../ex1/Lexer.cpp ../ex1/Token.cpp Rec.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

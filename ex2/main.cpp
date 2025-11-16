@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Rec.h"
+#include"Rec.h"
+#include "../ex1/Lexer.h"
 
 int main(int argc, char** argv) {
 	std::string source;
@@ -20,8 +21,11 @@ int main(int argc, char** argv) {
 	}
 
 	Lexer lexer(source);
-	auto tokens = lexer.scanTokens();   
-    //
+	auto tokens = lexer.scanTokens();
+	Rec rec(tokens);
+	if(rec.rec())
+		std::cout<<"true"<<std::endl;
+	else
+		std::cout<<"false"<<std::endl;
 	return 0;
 }
-

@@ -8,7 +8,7 @@ public:
     Rec(std::vector<Token> tokens);//构造函数
 private:
     const std::vector<Token> tokens;//词法分析结果
-    int cur;//cur指针
+    int cur=0;//cur指针
     int len;//tokens长度
     TokenType cur_type=tokens[cur].type;//当前type
 

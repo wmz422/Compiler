@@ -1,12 +1,14 @@
 #include <unordered_map>
 #include <cctype>
 #include <cstdlib>
+#include<iostream>
 #include"Lexer.h"
 
 Lexer::Lexer(const std::string& source):source(source){};
 
 char Lexer::getChar(){
     if (cur >= static_cast<int>(source.size())) return '\0';
+    //std::cout<<cur;
     return source[cur++];
 }
 
@@ -169,6 +171,7 @@ void Lexer::scanToken(){
         case '\n':
             line++;//回车记行数
             break;
+
         
         //处理标识符或关键字或者数字
         default:
@@ -176,7 +179,9 @@ void Lexer::scanToken(){
                 while(isalnum(c=getChar())||c=='_'){
                     ;
                 }
-                retract();
+                //std::cout<<"111";
+                if(c!='\0')
+                    retract();
                 lookup();
             }
             if(isnumber(c)){
